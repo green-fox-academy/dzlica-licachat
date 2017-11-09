@@ -15,6 +15,6 @@ public class UserController {
     @RequestMapping("/")
     public String chat(Model model) {
         model.addAttribute("user", userRepo.findAll());
-        return "user";
+        return "userlist";
     }
 }
