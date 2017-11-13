@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1>Peer to Peer Chat App</h1>
-<p th:text="${log}" ></p>
+<form th:action="@{/{id}/userlist(id=${edituser.id})}" th:object="${edituser}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{name}" th:value="${edituser.name}" />
+    <button type="submit" value="Submit">Update</button>
+</form>
 </body>
 </html>

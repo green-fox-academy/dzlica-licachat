@@ -5,12 +5,18 @@
     <title>Add new user</title>
 </head>
 <body>
+<h1>Enter name</h1>
+<h4 th:text="${listempty}"></h4>
+<p></p>
 <form th:action="@{/enter}" th:object="${adduser}" method="post">
     <input type="hidden" th:field="*{id}" />
-    <input type="text" th:field="*{name}" th:value="${name}" />
+    <input type="text" th:field="*{name}" th:value="${adduser.name}" th:placeholder="${adduser.name}"/>
     <button type="submit" value="Submit">Enter</button>
 </form>
+<p></p>
 <a th:href="@{/userlist}" th:text="'Cancel'" />
+<p></p>
+<p th:text="${userlist}" ></p>
 
 </body>
 </html>

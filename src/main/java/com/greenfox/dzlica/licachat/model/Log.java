@@ -33,6 +33,8 @@ public class Log {
     }
     //The log should look like this: 2017-05-16 21:47:19.040 INFO Request /message POST text=apple
 
+
+
     public void write() {
         String systemLoglevel = System.getenv("CHAT_APP_LOGLEVEL");
         if (systemLoglevel != null && systemLoglevel.equals("ERROR") && !this.loglevel.equals("ERROR")) {
