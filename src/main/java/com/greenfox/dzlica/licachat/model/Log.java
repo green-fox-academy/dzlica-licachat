@@ -43,7 +43,7 @@ public class Log {
 
     @Override
     public String toString() {
-        return createdAt.toString() + endpoint + loglevel + method + data;
+        return createdAt.toString() + " " + endpoint + " " + loglevel + " " + method + " " + data;
     }
 
     public Log() {
