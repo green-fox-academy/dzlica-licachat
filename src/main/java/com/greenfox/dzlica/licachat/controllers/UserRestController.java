@@ -3,13 +3,11 @@ package com.greenfox.dzlica.licachat.controllers;
 import com.greenfox.dzlica.licachat.LicachatApplication;
 import com.greenfox.dzlica.licachat.model.*;
 import com.greenfox.dzlica.licachat.repositories.model.ChatMessageRepo;
-import com.sun.xml.internal.ws.api.message.Packet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Timestamp;
 
 @RestController
 public class UserRestController {
