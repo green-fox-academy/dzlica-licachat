@@ -5,7 +5,7 @@ public class Hiba {
     String error;
 
     public Hiba(String error) {
-        this.error = "Missing fields: ";
+        this.error = error;
     }
 
     public Hiba() {

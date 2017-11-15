@@ -31,10 +31,7 @@ public class UserController {
     ChatMessageRepo chatMessageRepo;
 
     @GetMapping("/{id}/userlist")
-    public String chat(Model model, HttpServletRequest request, User user, @PathVariable Long id, @RequestParam(required = false) String text) {
-        Log log = new Log("INFO", request);
-        System.out.println(log.toString());
-        logRepo.save(log);
+    public String chat(Model model, User user, @PathVariable Long id, @RequestParam(required = false) String text) {
         model.addAttribute("edituser", userRepo.findOne(id));
         model.addAttribute("addmessage", new ChatMessage());
         model.addAttribute("messages", chatMessageRepo.findAll());

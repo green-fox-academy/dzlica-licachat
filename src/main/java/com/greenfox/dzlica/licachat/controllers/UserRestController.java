@@ -33,14 +33,7 @@ public class UserRestController {
         if (recive.getClient() == null && recive.getChatMessage() == null) {
             return new Hiba("Something wrong");
 
-//        ChatMessage incomingMessage = recive.getChatMessage();
-//        Client messageSender = recive.getClient();
-//        if (messageStatus.getMessageStatus(incomingMessage) && !(messageSender.getId().equals(LicachatApplication.CHAT_APP_UNIQUE_ID))) {
-
-
         }
- //       return new Hiba("Something wrong with your message" + HttpStatus.UNAUTHORIZED);
         return new Response("ok" + HttpStatus.OK);
     }
-
 }
