@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 
 @Controller
 public class UserController {
@@ -50,7 +51,8 @@ public class UserController {
     public String postMessage(@PathVariable Long id, @ModelAttribute ChatMessage chatMessage) {
         User user = userRepo.findOne(id);
         chatMessage.setUsername(user.getName());
-        chatMessage.setTimestamp((long) 0);
+        chatMessage.setTimestamp(new Timestamp(System.currentTimeMillis()));
+        chatMessage.setId(chatMessage.randomId());
         chatMessageRepo.save(chatMessage);
         return "redirect:/" + user.getId() + "/userlist";
     }

@@ -1,30 +1,38 @@
 package com.greenfox.dzlica.licachat.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
 public class ChatMessage {
 
     @Id
-    @GeneratedValue
     Long id;
     String text;
     String username;
-    Long timestamp;
+    Timestamp timestamp;
 
     public ChatMessage() {
 
     }
 
-    public ChatMessage(Long id, String text) {
-        this.id = id;
+    public ChatMessage(Long id, String text, Timestamp timestamp) {
+        this.id = randomId();
         this.text = text;
+        this.timestamp = timestamp;
     }
 
     public ChatMessage(String text) {
-        this.id = Long.valueOf((int) (Math.random() * (9999999 - 1000000)) + 1000000);
-        this.text = text;
+        this.id = randomId();
+    }
+
+    public Long randomId() {
+        Long id = ThreadLocalRandom.current().nextLong(1000000,9999999);
+        return id;
     }
 
     public String getUsername() {
@@ -35,11 +43,11 @@ public class ChatMessage {
         this.username = username;
     }
 
-    public Long getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
