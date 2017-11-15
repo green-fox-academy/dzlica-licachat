@@ -11,5 +11,19 @@
     <input type="text" th:field="*{name}" th:value="${edituser.name}" />
     <button type="submit" value="Submit">Update</button>
 </form>
+<p></p>
+<p th:text="'App'" ></p>
+<p th:text="'Hi there! Submit your message using the send button'" ></p>
+<p></p>
+<div th:each="message:${messages}">
+    <p th:text="${message.username}" ></p>
+    <p th:text="${message.text}"></p>
+</div>
+<p></p>
+<form th:action="@{/{id}/addpost(id=${edituser.id})}" th:object="${addmessage}" method="post">
+    <!--<input type="hidden" th:field="*{id}" />-->
+    <input type="text" th:field="*{text}" th:value="${text}" />
+    <button type="submit" value="Submit">Add message</button>
+</form>
 </body>
 </html>

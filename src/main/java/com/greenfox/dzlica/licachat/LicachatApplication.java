@@ -1,5 +1,6 @@
 package com.greenfox.dzlica.licachat;
 
+import com.greenfox.dzlica.licachat.repositories.model.ChatMessageRepo;
 import com.greenfox.dzlica.licachat.repositories.model.LogRepo;
 import com.greenfox.dzlica.licachat.repositories.model.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class LicachatApplication implements CommandLineRunner {
 
 	@Autowired
     LogRepo logRepo;
+
+	@Autowired
+	ChatMessageRepo chatMessageRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LicachatApplication.class, args);

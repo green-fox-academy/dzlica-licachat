@@ -1,8 +1,10 @@
 package com.greenfox.dzlica.licachat.controllers;
 
+import com.greenfox.dzlica.licachat.model.ChatMessage;
 import com.greenfox.dzlica.licachat.model.Log;
 import com.greenfox.dzlica.licachat.model.User;
 import com.greenfox.dzlica.licachat.model.UserHandler;
+import com.greenfox.dzlica.licachat.repositories.model.ChatMessageRepo;
 import com.greenfox.dzlica.licachat.repositories.model.LogRepo;
 import com.greenfox.dzlica.licachat.repositories.model.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +26,32 @@ public class UserController {
     @Autowired
     UserHandler userHandler;
 
+    @Autowired
+    ChatMessageRepo chatMessageRepo;
+
     @GetMapping("/{id}/userlist")
-    public String chat(Model model, HttpServletRequest request, @PathVariable Long id) {
+    public String chat(Model model, HttpServletRequest request, User user, @PathVariable Long id, @RequestParam(required = false) String text) {
         Log log = new Log("INFO", request);
         System.out.println(log.toString());
         logRepo.save(log);
         model.addAttribute("edituser", userRepo.findOne(id));
+        model.addAttribute("addmessage", new ChatMessage());
+        model.addAttribute("messages", chatMessageRepo.findAll());
         return "userlist";
     }
 
     @PostMapping("/{id}/userlist")
     public String updateUSer(@ModelAttribute User user) {
         userRepo.save(user);
+        return "redirect:/" + user.getId() + "/userlist";
+    }
+
+    @PostMapping("/{id}/addpost")
+    public String postMessage(@PathVariable Long id, @ModelAttribute ChatMessage chatMessage) {
+        User user = userRepo.findOne(id);
+        chatMessage.setUsername(user.getName());
+        chatMessage.setTimestamp((long) 0);
+        chatMessageRepo.save(chatMessage);
         return "redirect:/" + user.getId() + "/userlist";
     }
 

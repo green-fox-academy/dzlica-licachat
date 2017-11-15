@@ -31,7 +31,7 @@ public class Log {
 
         this.write();
     }
-    //The log should look like this: 2017-05-16 21:47:19.040 INFO Request /message POST text=apple
+    //The log should look like this: 2017-05-16 21:47:19.040 INFO Request /text POST text=apple
 
 
 
