@@ -1,9 +1,7 @@
 package com.greenfox.dzlica.licachat.controllers;
 
-import com.greenfox.dzlica.licachat.model.ChatMessage;
-import com.greenfox.dzlica.licachat.model.Log;
-import com.greenfox.dzlica.licachat.model.User;
-import com.greenfox.dzlica.licachat.model.UserHandler;
+import com.greenfox.dzlica.licachat.Service.MessageStatus;
+import com.greenfox.dzlica.licachat.model.*;
 import com.greenfox.dzlica.licachat.repositories.model.ChatMessageRepo;
 import com.greenfox.dzlica.licachat.repositories.model.LogRepo;
 import com.greenfox.dzlica.licachat.repositories.model.UserRepo;
@@ -30,6 +28,9 @@ public class UserController {
     @Autowired
     ChatMessageRepo chatMessageRepo;
 
+    @Autowired
+    MessageStatus messageStatus;
+
     @GetMapping("/{id}/userlist")
     public String chat(Model model, User user, @PathVariable Long id, @RequestParam(required = false) String text) {
         model.addAttribute("edituser", userRepo.findOne(id));
@@ -50,7 +51,8 @@ public class UserController {
         chatMessage.setUsername(user.getName());
         chatMessage.setTimestamp(new Timestamp(System.currentTimeMillis()));
         chatMessage.setId(chatMessage.randomId());
-        chatMessageRepo.save(chatMessage);
+        Recive recive = new Recive(chatMessage, new Client());
+        messageStatus.sendMessage(recive);
         return "redirect:/" + user.getId() + "/userlist";
     }
 

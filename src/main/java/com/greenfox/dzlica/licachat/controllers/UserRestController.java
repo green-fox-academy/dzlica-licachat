@@ -32,6 +32,7 @@ public class UserRestController {
             return new Hiba("Something wrong");
 
         }
+        chatMessageRepo.save(recive.getChatMessage());
         return new Response("ok" + HttpStatus.OK);
     }
 }
