@@ -16,8 +16,6 @@ public class UserRestController {
     @Autowired
     ChatMessageRepo chatMessageRepo;
 
-
-
     @GetMapping("/")
     public void chatApp(HttpServletRequest request) {
         Log log = new Log("INFO", request);
@@ -36,7 +34,7 @@ public class UserRestController {
     }
 
     @GetMapping("api/messages")
-    public Object listMessage() {
+    public Object listMessage(Recive recive) {
         return chatMessageRepo.findAll();
     }
 
