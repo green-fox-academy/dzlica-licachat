@@ -14,5 +14,6 @@ public class MessageStatus {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Recive> httpent = new HttpEntity<>(recive);
         Response response = restTemplate.postForObject(System.getenv("CHAT_APP_PEER_ADDRESS"),httpent, Response.class);
+ //       Response response = restTemplate.postForObject("http://localhost:8080/api/message/receive",httpent, Response.class);
     }
 }
