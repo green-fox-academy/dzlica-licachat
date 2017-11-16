@@ -28,11 +28,16 @@ public class UserRestController {
     @CrossOrigin("*")
     @PostMapping("/api/message/receive")
     public Object receive(@RequestBody Recive recive) {
-        if (recive.getClient() == null && recive.getChatMessage() == null) {
+        if (recive.getClient() == null && recive.getMessage() == null) {
             return new Hiba("Something wrong");
 
         }
-        chatMessageRepo.save(recive.getChatMessage());
+        chatMessageRepo.save(recive.getMessage());
         return new Response("ok" + HttpStatus.OK);
+    }
+
+    @GetMapping("api/messages")
+    public Object listMessage() {
+        return chatMessageRepo.findAll();
     }
 }

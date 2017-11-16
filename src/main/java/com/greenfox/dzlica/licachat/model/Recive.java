@@ -2,23 +2,23 @@ package com.greenfox.dzlica.licachat.model;
 
 public class Recive {
 
-    private ChatMessage chatMessage;
+    private ChatMessage message;
     private Client client;
 
-    public Recive(ChatMessage chatMessage, Client client) {
-        this.chatMessage = chatMessage;
+    public Recive(ChatMessage message, Client client) {
+        this.message = message;
         this.client = client;
     }
 
     public Recive() {
     }
 
-    public ChatMessage getChatMessage() {
-        return chatMessage;
+    public ChatMessage getMessage() {
+        return message;
     }
 
-    public void setChatMessage(ChatMessage chatMessage) {
-        this.chatMessage = chatMessage;
+    public void setMessage(ChatMessage message) {
+        this.message = message;
     }
 
     public Client getClient() {
@@ -28,4 +28,14 @@ public class Recive {
     public void setClient(Client client) {
         this.client = client;
     }
+
+    @Override
+    public String toString() {
+        return "Recive{" +
+                "message=" + message +
+                ", client=" + client +
+                '}';
+    }
+
+
 }
