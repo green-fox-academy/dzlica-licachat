@@ -1,5 +1,7 @@
 package com.greenfox.dzlica.licachat.model;
 
+import static com.greenfox.dzlica.licachat.LicachatApplication.CHAT_APP_UNIQUE_ID;
+
 public class Client {
 
     private String id;
@@ -9,6 +11,7 @@ public class Client {
     }
 
     public Client() {
+        this.id = CHAT_APP_UNIQUE_ID;
     }
 
     public String getId() {
