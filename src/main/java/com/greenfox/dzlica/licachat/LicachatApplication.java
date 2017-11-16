@@ -22,7 +22,7 @@ public class LicachatApplication implements CommandLineRunner {
 
     public static String CHAT_APP_LOGLEVEL = System.getenv("CHAT_APP_LOGLEVEL");
     public static String CHAT_APP_UNIQUE_ID = System.getenv("CHAT_APP_UNIQUE_ID");
-    public static String CHAT_APP_PEER_ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
+ //   public static String CHAT_APP_PEER_ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
 
 	public static void main(String[] args) {
 		SpringApplication.run(LicachatApplication.class, args);
