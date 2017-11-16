@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class UserRestController {
 
-//    @Autowired
-//    private MessageStatus messageStatus;
 
     @Autowired
     ChatMessageRepo chatMessageRepo;
+
 
 
     @GetMapping("/")
@@ -40,4 +39,6 @@ public class UserRestController {
     public Object listMessage() {
         return chatMessageRepo.findAll();
     }
+
+
 }

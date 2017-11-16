@@ -1,5 +1,6 @@
 package com.greenfox.dzlica.licachat;
 
+import com.greenfox.dzlica.licachat.model.Recive;
 import com.greenfox.dzlica.licachat.repositories.model.ChatMessageRepo;
 import com.greenfox.dzlica.licachat.repositories.model.LogRepo;
 import com.greenfox.dzlica.licachat.repositories.model.UserRepo;
@@ -20,9 +21,10 @@ public class LicachatApplication implements CommandLineRunner {
 	@Autowired
 	ChatMessageRepo chatMessageRepo;
 
+
     public static String CHAT_APP_LOGLEVEL = System.getenv("CHAT_APP_LOGLEVEL");
     public static String CHAT_APP_UNIQUE_ID = System.getenv("CHAT_APP_UNIQUE_ID");
- //   public static String CHAT_APP_PEER_ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
+    public static String CHAT_APP_PEER_ADDRESS = System.getenv("CHAT_APP_PEER_ADDRESS");
 
 	public static void main(String[] args) {
 		SpringApplication.run(LicachatApplication.class, args);
